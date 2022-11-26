@@ -1,3 +1,5 @@
+
+
 const myForm = document.querySelector("#my-form");
 const nameInput = document.querySelector("#name");
 const emailInput = document.querySelector("#email");
@@ -20,15 +22,10 @@ function onSubmit(e) {
     setTimeout(() => msg.remove(), 3000);
   } else {
     //create delete button
-    var deleteBtn = document.createElement('button');
-    deleteBtn.className ="btn btn-danger btn-sm float-right delete"
-    
-    deleteBtn.appendChild(document.createTextNode('X'));
 
     // Create new list item with user
     const li = document.createElement("li");
 
-    li.appendChild(deleteBtn);
 
     // Add text node with input values
     li.appendChild(
@@ -45,7 +42,7 @@ function onSubmit(e) {
     };
 
     let myobj_serialized = JSON.stringify(myobj);
-    localStorage.setItem("myobj",myobj_serialized);
+    localStorage.setItem(myobj.email,myobj_serialized);
 
      let myobj_deserializes =JSON.parse(localStorage.getItem("myobj"));
 
@@ -60,14 +57,4 @@ function onSubmit(e) {
     nameInput.value = "";
     emailInput.value = "";
   }
-}
-
-function deleteItem(e){
-    if(e.target.classList.contains('delete')){
-        if(confirm("are you sure"))
-        {
-            var li =e.target.parentElement;
-            userList.removeChild(li);
-        }
-    }
 }
