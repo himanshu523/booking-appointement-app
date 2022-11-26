@@ -36,10 +36,21 @@ function onSubmit(e) {
     );
 
     // Add HTML
-    // li.innerHTML = `<strong>${nameInput.value}</strong>e: ${emailInput.value}`;
+     //li.innerHTML = ` <strong>${nameInput.value}</strong>: ${emailInput.value}`;
 
     // adding to local Storage
-    localStorage.setItem( nameInput.value, emailInput.value);
+   let myobj={
+        name : nameInput.value,
+        email:emailInput.value,
+    };
+
+    let myobj_serialized = JSON.stringify(myobj);
+    localStorage.setItem("myobj",myobj_serialized);
+
+     let myobj_deserializes =JSON.parse(localStorage.getItem("myobj"));
+
+
+    //localStorage.setItem( nameInput.value, emailInput.value);
     //console.log(localStorage.getItem(`${nameInput.value}`));
 
     // Append to ul
